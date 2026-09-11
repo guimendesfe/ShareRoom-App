@@ -46,19 +46,19 @@ Quem recebe o link **não precisa instalar nenhum aplicativo**.
 
 ### Início
 
-![ShareRoom Home](assets/home.png)
+![ShareRoom Home](home.png)
 
 ### Escolha da tela ou janela
 
-![Seleção de tela do ShareRoom](assets/sources.png)
+![Seleção de tela do ShareRoom](sources.png)
 
 ### Transmissão ao vivo
 
-![ShareRoom durante uma transmissão](assets/live.png)
+![ShareRoom durante uma transmissão](live.png)
 
 ### Viewer
 
-![Viewer web do ShareRoom](assets/viewer.png)
+![Viewer web do ShareRoom](viewer.png)
 
 ---
 
