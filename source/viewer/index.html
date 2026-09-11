@@ -1,0 +1,133 @@
+<!doctype html>
+
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    />
+
+    <!--
+        =========================
+        IDENTIDADE SHAREROOM
+        =========================
+    -->
+
+    <link
+        rel="icon"
+        href="/favicon.ico"
+        sizes="any"
+    />
+
+    <meta
+        name="theme-color"
+        content="#0b0d10"
+    />
+
+
+    <!--
+        =========================
+        CONTENT SECURITY POLICY
+        =========================
+
+        Permitido:
+
+        - React / Vite
+        - backend local
+        - backend de produção
+        - LiveKit
+        - áudio/vídeo da transmissão
+        - workers necessários ao WebRTC
+        - desenvolvimento com HMR
+
+        Bloqueado:
+
+        - plugins
+        - iframes carregados pelo Viewer
+        - formulários
+        - scripts externos não autorizados
+        - conexões para destinos não previstos
+    -->
+
+    <meta
+        http-equiv="Content-Security-Policy"
+        content="
+            default-src 'self';
+
+            script-src
+                'self'
+                'unsafe-inline';
+
+            script-src-attr
+                'none';
+
+            style-src
+                'self'
+                'unsafe-inline';
+
+            img-src
+                'self'
+                data:
+                blob:;
+
+            media-src
+                'self'
+                blob:
+                data:;
+
+            connect-src
+                'self'
+                http://localhost:3001
+                ws://localhost:5174
+                https://share-room-nine.vercel.app
+                https://*.livekit.cloud
+                wss://*.livekit.cloud;
+
+            worker-src
+                'self'
+                blob:;
+
+            font-src
+                'self'
+                data:;
+
+            object-src
+                'none';
+
+            frame-src
+                'none';
+
+            base-uri
+                'none';
+
+            form-action
+                'none';
+
+            manifest-src
+                'self';
+        "
+    />
+
+    <meta
+        name="referrer"
+        content="no-referrer"
+    />
+
+    <title>ShareRoom</title>
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+    <script
+        type="module"
+        src="/src/main.tsx"
+    ></script>
+
+</body>
+
+</html>
