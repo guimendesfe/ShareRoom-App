@@ -1,0 +1,96 @@
+{
+  "name": "shareroom",
+  "version": "1.0.0",
+  "description": "Compartilhamento privado de tela e áudio com convites temporários por transmissão",
+  "main": "main.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "electron .",
+    "dev:vite": "vite",
+    "dev": "concurrently -k \"vite\" \"wait-on http://localhost:5173 && electron .\"",
+    "build": "vite build",
+    "dist": "npm.cmd run build && electron-builder",
+    "dist:win": "npm.cmd run build && electron-builder --win nsis"
+  },
+  "keywords": [
+    "screen-sharing",
+    "electron",
+    "livekit",
+    "webrtc"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.7",
+    "@vitejs/plugin-react": "^6.1.1",
+    "concurrently": "^10.0.5",
+    "electron": "^44.3.0",
+    "electron-builder": "^26.15.3",
+    "livekit-client": "^2.22.3",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "typescript": "^7.0.2",
+    "vite": "^8.2.2",
+    "wait-on": "^9.1.0"
+  },
+  "build": {
+    "appId": "com.shareroom.app",
+    "productName": "ShareRoom",
+    "asar": true,
+    "compression": "maximum",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "main.js",
+      "preload.js",
+      "package.json",
+      "!**/*.map",
+      "!**/.env",
+      "!**/.env.*",
+      "!**/*.log",
+      "!**/.git/**",
+      "!**/.github/**",
+      "!**/server/**",
+      "!**/viewer/**",
+      "!**/native/**",
+      "!**/release/**"
+    ],
+    "extraResources": [
+      {
+        "from": "native/shareroom-audio/x64/Release/ApplicationLoopback.exe",
+        "to": "native/ApplicationLoopback.exe"
+      },
+      {
+        "from": "build/icon.ico",
+        "to": "icon.ico"
+      }
+    ],
+    "win": {
+      "icon": "build/icon.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "requestedExecutionLevel": "asInvoker"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "ShareRoom",
+      "deleteAppDataOnUninstall": false,
+      "installerIcon": "build/icon.ico",
+      "uninstallerIcon": "build/icon.ico",
+      "installerHeaderIcon": "build/icon.ico",
+      "artifactName": "${productName} Setup ${version}.${ext}"
+    }
+  }
+}
